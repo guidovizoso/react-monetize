@@ -1,0 +1,132 @@
+<h2 align="center">💸</h2>
+<h1 align="center">react-monetize</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/guido_vizoso" target="_blank">
+    <img alt="Twitter: guido\_vizoso" src="https://img.shields.io/twitter/follow/guido_vizoso.svg?style=social" />
+  </a>
+</p>
+
+> Helpers and hooks to speed up your integration with [Web Monetization API](https://webmonetization.org/)
+
+## Install
+
+Currently supports React, Create React App and Next.Js
+Not yet testd in Gatsby or Preact.
+
+```sh
+yarn add react-monetize
+```
+
+## Usage
+
+Wrap your app with the `MonetizeProvider` and add your payment pointer.
+
+> You can read how to get one here: https://webmonetization.org/docs/receiving
+
+```javascript
+import { MonetizeProvider } from 'react-monetize';
+
+function App() {
+  return (
+    <MonetizePovider paymentPointer="myPaymentPointer">
+      <YourApp />
+    </MonetizeProvider>
+  );
+}
+
+export default App;
+```
+
+Now you have two hooks available to use anywhere in your app:
+
+### useStatus
+
+State is the current state provided by Web Monetization API according to this [list](https://webmonetization.org/docs/api#states).
+
+```javascript
+import { useStatus } from 'react-monetize';
+
+function Component() {
+  const { state, events } = useStatus();
+
+  return (
+    <>
+      <p>State: {state}</p>
+      <ul>
+        {events.map((e) => (
+          <li key={e.timeStamp}>
+            {`${e.detail.amount} ${e.detail.assetCode}`}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+export default Component;
+```
+
+### useContent
+
+Provides a boolean that indicates if the user has provided a payment or not so you can choose to show paid content.
+
+```javascript
+import { useContent } from 'react-monetize';
+
+function MonetizedContent() {
+  const { isMonetized } = useContent();
+  return (
+    <React.Fragment>
+      {isMonetized ? (
+        <div>My premium content</div>
+      ) : (
+        <div>You need to subscribe to access premium content</div>
+      )}
+    </React.Fragment>
+  );
+}
+
+export default MonetizedContent;
+```
+
+## Contribute
+
+Clone and then:
+
+```sh
+cd react-monetize
+yarn
+yarn build
+cd example
+yarn
+yarn dev
+```
+
+Develop.
+
+## Roadmap
+
+- Improve code on MonetizeContext file.
+- Add tests.
+- Add ESLint.
+- Remove global declaration for document once the property is added to DOM types.
+
+## Author
+
+👤 **Guido Vizoso <guido.vizoso9@gmail.com>**
+
+- Twitter: [@guido_vizoso](https://twitter.com/guido_vizoso)
+- Github: [@guidovizoso](https://github.com/guidovizoso)
+- LinkedIn: [@guidovizoso](https://linkedin.com/in/guidovizoso)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
