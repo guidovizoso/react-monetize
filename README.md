@@ -101,7 +101,7 @@ Clone and then:
 cd react-monetize
 yarn
 yarn build
-cd example
+cd examples/next-js
 yarn
 yarn dev
 ```
@@ -112,7 +112,7 @@ Develop.
 
 - Improve code on MonetizeContext file.
 - Add tests.
-- Add ESLint.
+- ~~Add ESLint.~~
 - Remove global declaration for document once the property is added to DOM types.
 
 ## Author
