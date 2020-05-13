@@ -1,4 +1,4 @@
-<p align="center" style="font-size: 48px; margin: 0;">💸</p>
+<h2>💸</h2>
 <h1 align="center">react-monetize</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.2.2-blue.svg?cacheSeconds=2592000" />
@@ -15,7 +15,7 @@
 ## Install
 
 Currently supports React, Create React App and Next.Js
-Not yet testd in Gatsby or Preact.
+Not yet tested in Gatsby or Preact.
 
 ```sh
 yarn add react-monetize
