@@ -4,7 +4,7 @@ import { Context } from './MonetizeContext';
 import { ContextType } from './types';
 
 function useStatus() {
-    const { state, setState } = useContext<ContextType>(Context);
+    const { state, dispatch } = useContext<ContextType>(Context);
 
     return {
         state: state.state,

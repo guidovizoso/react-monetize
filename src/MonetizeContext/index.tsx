@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { ContextType, StateType } from '../types';
+import reducers from './reducers';
 import { addListeners, removeListeners } from '../utils/events';
 
 interface ProviderProps {
@@ -17,92 +18,51 @@ const initialState: StateType = {
 
 const Context = React.createContext<ContextType>({
     state: initialState,
-    setState: () => {},
+    dispatch: () => {},
 });
 
 const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
-    const [state, setState] = React.useState<StateType>(initialState);
-
-    const handleStart = (e) => {
-        setState((prevState) => {
-            return {
-                ...prevState,
-                isLoading: false,
-                isMonetized: true,
-                state: document.monetization.state,
-            };
-        });
-    };
-
-    const handlePending = (e) => {
-        setState((prevState) => {
-            return {
-                ...prevState,
-                isLoading: false,
-                isMonetized: true,
-                state: document.monetization.state,
-            };
-        });
-    };
-
-    const handleStop = (e) => {
-        setState((prevState) => {
-            return {
-                ...prevState,
-                isLoading: false,
-                isMonetized: false,
-                state: document.monetization.state,
-            };
-        });
-    };
-
-    const handleProgress = (e) => {
-        const events = state.events;
-        events.push(e);
-        setState((prevState) => {
-            return {
-                ...prevState,
-                isLoading: false,
-                isMonetized: true,
-                state: document.monetization.state,
-                events,
-            };
-        });
-    };
+    const [state, dispatch] = React.useReducer(reducers, initialState);
 
     React.useEffect(() => {
-        if (typeof document !== 'undefined' && (document as any).monetization) {
+        if (typeof document !== 'undefined' && document.monetization) {
             const pointer = document.createElement('meta');
             pointer.name = 'monetization';
             pointer.content = paymentPointer;
             document.head.appendChild(pointer);
 
-            const { state } = (document as any).monetization;
-            setState((prevState) => {
-                return {
-                    ...prevState,
-                    isLoading: false,
-                    isMonetized: true,
-                    state,
-                };
-            });
+            dispatch({ type: 'INITIAL_DECETED', payload: { state: document.monetization.state } });
         } else {
-            setState((prevState) => {
-                return {
-                    ...prevState,
-                    isLoading: false,
-                };
-            });
+            dispatch({ type: 'INITIAL_NOT_DECETED' });
         }
     }, []);
 
     React.useEffect(() => {
-        if (typeof document !== 'undefined' && (document as any).monetization) {
+        if (typeof document !== 'undefined' && document.monetization) {
             addListeners([
-                { name: 'monetizationstart', handler: (e) => handleStart(e) },
-                { name: 'monetizationpending', handler: (e) => handlePending(e) },
-                { name: 'monetizationstop', handler: (e) => handleStop(e) },
-                { name: 'monetizationprogress', handler: (e) => handleProgress(e) },
+                {
+                    name: 'monetizationstart',
+                    handler: () =>
+                        dispatch({ type: 'MONETIZATION_START', payload: { state: document.monetization.state } }),
+                },
+                {
+                    name: 'monetizationpending',
+                    handler: () =>
+                        dispatch({ type: 'MONETIZATION_PENDING', payload: { state: document.monetization.state } }),
+                },
+                {
+                    name: 'monetizationstop',
+                    handler: () =>
+                        dispatch({ type: 'MONETIZATION_STOP', payload: { state: document.monetization.state } }),
+                },
+                {
+                    name: 'monetizationprogress',
+                    handler: (e) =>
+                        dispatch({
+                            type: 'MONETIZATION_PROGRESS',
+                            payload: { state: document.monetization.state, event: e },
+                        }),
+                },
             ]);
             return () => {
                 removeListeners([
@@ -115,7 +75,7 @@ const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
         }
     }, []);
 
-    return <Context.Provider value={{ state, setState }}>{children}</Context.Provider>;
+    return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
 };
 
 export { Context, Provider };

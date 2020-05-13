@@ -1,7 +1,7 @@
-<h2 align="center">💸</h2>
+<p align="center" style="font-size: 48px; margin: 0;">💸</p>
 <h1 align="center">react-monetize</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.2.2-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -31,11 +31,11 @@ Wrap your app with the `MonetizeProvider` and add your payment pointer.
 import { MonetizeProvider } from 'react-monetize';
 
 function App() {
-  return (
-    <MonetizePovider paymentPointer="myPaymentPointer">
-      <YourApp />
-    </MonetizeProvider>
-  );
+    return (
+        <MonetizePovider paymentPointer="myPaymentPointer">
+            <YourApp />
+        </MonetizeProvider>
+    );
 }
 
 export default App;
@@ -51,20 +51,18 @@ State is the current state provided by Web Monetization API according to this [l
 import { useStatus } from 'react-monetize';
 
 function Component() {
-  const { state, events } = useStatus();
+    const { state, events } = useStatus();
 
-  return (
-    <>
-      <p>State: {state}</p>
-      <ul>
-        {events.map((e) => (
-          <li key={e.timeStamp}>
-            {`${e.detail.amount} ${e.detail.assetCode}`}
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+    return (
+        <>
+            <p>State: {state}</p>
+            <ul>
+                {events.map((e) => (
+                    <li key={e.timeStamp}>{`${e.detail.amount} ${e.detail.assetCode}`}</li>
+                ))}
+            </ul>
+        </>
+    );
 }
 
 export default Component;
@@ -78,16 +76,12 @@ Provides a boolean that indicates if the user has provided a payment or not so y
 import { useContent } from 'react-monetize';
 
 function MonetizedContent() {
-  const { isMonetized } = useContent();
-  return (
-    <React.Fragment>
-      {isMonetized ? (
-        <div>My premium content</div>
-      ) : (
-        <div>You need to subscribe to access premium content</div>
-      )}
-    </React.Fragment>
-  );
+    const { isMonetized } = useContent();
+    return (
+        <React.Fragment>
+            {isMonetized ? <div>My premium content</div> : <div>You need to subscribe to access premium content</div>}
+        </React.Fragment>
+    );
 }
 
 export default MonetizedContent;
@@ -108,20 +102,37 @@ yarn dev
 
 Develop.
 
-## Roadmap
+## Roadmap to v1.0.0
 
+<<<<<<< HEAD
+-   ~~Improve code on MonetizeContext file.~~
+-   ~~Add ESLint.~~
+-   Add tests.
+
+## Future changes
+
+-   Remove global declaration for document once the property is added to DOM types.
+-   _Monetization UI?_
+=======
 - Improve code on MonetizeContext file.
 - Add tests.
 - ~~Add ESLint.~~
 - Remove global declaration for document once the property is added to DOM types.
+>>>>>>> 25265ea8e42d1defb63cc10598ded706cfe48d4f
 
 ## Author
 
 👤 **Guido Vizoso <guido.vizoso9@gmail.com>**
 
-- Twitter: [@guido_vizoso](https://twitter.com/guido_vizoso)
-- Github: [@guidovizoso](https://github.com/guidovizoso)
-- LinkedIn: [@guidovizoso](https://linkedin.com/in/guidovizoso)
+-   Twitter: [@guido_vizoso](https://twitter.com/guido_vizoso)
+-   Github: [@guidovizoso](https://github.com/guidovizoso)
+-   LinkedIn: [@guidovizoso](https://linkedin.com/in/guidovizoso)
+
+## Related projects
+
+-   Sharafian's approach: https://github.com/sharafian/react-web-monetization
+-   jkga's vanilla: https://github.com/jkga/is-web-monetized
+-   sorxrob's Svelte project: https://github.com/sorxrob/svelte-monetization
 
 ## Show your support
 
