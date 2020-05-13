@@ -104,7 +104,6 @@ Develop.
 
 ## Roadmap to v1.0.0
 
-<<<<<<< HEAD
 -   ~~Improve code on MonetizeContext file.~~
 -   ~~Add ESLint.~~
 -   Add tests.
@@ -113,12 +112,6 @@ Develop.
 
 -   Remove global declaration for document once the property is added to DOM types.
 -   _Monetization UI?_
-=======
-- Improve code on MonetizeContext file.
-- Add tests.
-- ~~Add ESLint.~~
-- Remove global declaration for document once the property is added to DOM types.
->>>>>>> 25265ea8e42d1defb63cc10598ded706cfe48d4f
 
 ## Author
 
