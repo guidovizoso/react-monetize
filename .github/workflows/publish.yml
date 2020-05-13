@@ -19,11 +19,11 @@ jobs:
       - name: Run linters
         uses: samuelmeuli/lint-action@v1.5.2
         with:
-          github_token: ${{ secrets.github_token }}
           eslint: true
           prettier: true
           
       - name: Publish to NPM
+      - uses: actions/setup-node@v1.4.2
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
