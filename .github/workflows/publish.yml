@@ -1,29 +1,20 @@
 name: CI
 
 on:
-  push:
-    tags:
-    - '*'
+    push:
+        branches:
+            - ci-playground
 
-jobs:
-  build:
+build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Setup Node.js environment
-      - uses: actions/setup-node@v1.4.2
-        with:
-          node-version: '12'
-      - run: yarn install
-        
-      - name: Run linters
-        uses: samuelmeuli/lint-action@v1.5.2
-        with:
-          eslint: true
-          prettier: true
-          
-      - name: Publish to NPM
-      - uses: actions/setup-node@v1.4.2
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
+        - uses: actions/checkout@v2
+        # Setup .npmrc file to publish to npm
+        - uses: actions/setup-node@v1
+          with:
+              node-version: '12.x'
+              registry-url: 'https://registry.npmjs.org'
+        - run: yarn
+        - run: yarn publish
+          env:
+              NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
