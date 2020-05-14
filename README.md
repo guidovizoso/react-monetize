@@ -1,21 +1,18 @@
-<h2>💸</h2>
+<h2 align="center">💸</h2>
 <h1 align="center">react-monetize</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.2.3-blue.svg?cacheSeconds=2592000" />
-  ![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?branch=master)
-  <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-  <a href="https://twitter.com/guido_vizoso" target="_blank">
-    <img alt="Twitter: guido\_vizoso" src="https://img.shields.io/twitter/follow/guido_vizoso.svg?style=social" />
-  </a>
-</p>
+
+![Version](https://img.shields.io/badge/version-0.2.3-blue.svg?cacheSeconds=2592000)
+![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=0.2.3)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+<a href="https://twitter.com/guido_vizoso" target="_blank">
+<img alt="Twitter: guido\_vizoso" src="https://img.shields.io/twitter/follow/guido_vizoso.svg?style=social" />
+</a>
 
 > Helpers and hooks to speed up your integration with [Web Monetization API](https://webmonetization.org/)
 
 ## Install
 
-Currently supports React, Create React App and Next.Js
+Currently supports React, Create React App and Next Js.
 Not yet tested in Gatsby or Preact.
 
 ```sh
@@ -46,7 +43,9 @@ Now you have two hooks available to use anywhere in your app:
 
 ### useStatus
 
-State is the current state provided by Web Monetization API according to this [list](https://webmonetization.org/docs/api#states).
+**State** is the current state provided by Web Monetization API according to this [list](https://webmonetization.org/docs/api#states).
+
+**Events** are the payment events registered stored as `CustomEvent`.
 
 ```javascript
 import { useStatus } from 'react-monetize';
