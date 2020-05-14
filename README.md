@@ -1,7 +1,8 @@
 <h2>💸</h2>
 <h1 align="center">react-monetize</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.2.2-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.2.3-blue.svg?cacheSeconds=2592000" />
+  ![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?branch=master)
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -106,6 +107,7 @@ Develop.
 
 -   ~~Improve code on MonetizeContext file.~~
 -   ~~Add ESLint.~~
+-   ~~Automatic deployment with Github Actions.~~
 -   Add tests.
 
 ## Future changes

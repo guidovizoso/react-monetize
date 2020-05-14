@@ -1,6 +1,6 @@
 {
     "name": "react-monetize",
-    "version": "0.2.2-rc.2",
+    "version": "0.2.3",
     "description": "Helpers and hooks to speed up your integration with Web Monetization API",
     "author": "Guido Vizoso <guido.vizoso9@gmail.com>",
     "license": "MIT",
@@ -30,7 +30,8 @@
     "lint-staged": {
         "*.{js,ts,tsx}": [
             "eslint --fix"
-        ]
+        ],
+        "*.js": "eslint --cache --fix"
     },
     "dependencies": {
         "rollup": "^2.9.1",
@@ -48,6 +49,8 @@
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.3",
         "eslint-plugin-react": "^7.19.0",
+        "husky": ">=4",
+        "lint-staged": ">=10",
         "prettier": "^2.0.5",
         "rollup-plugin-peer-deps-external": "^2.2.2"
     },
