@@ -1,9 +1,10 @@
 <h2 align="center">💸</h2>
-<h1 align="center">react-monetize</h1>
+<h1 align="center">react-monetize <sup>1.0.0</sup></h1>
 
-![Version](https://img.shields.io/badge/version-0.2.3-blue.svg?cacheSeconds=2592000)
-![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=0.2.3)
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=1.0.0)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![npm](https://img.shields.io/npm/dt/react-monetize?label=npm%20downloads)
 <a href="https://twitter.com/guido_vizoso" target="_blank">
 <img alt="Twitter: guido\_vizoso" src="https://img.shields.io/twitter/follow/guido_vizoso.svg?style=social" />
 </a>
