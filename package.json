@@ -1,6 +1,6 @@
 {
     "name": "react-monetize",
-    "version": "1.0.0-rc.2",
+    "version": "1.0.0-rc.3",
     "description": "Helpers and hooks to speed up your integration with Web Monetization API",
     "author": "Guido Vizoso <guido.vizoso9@gmail.com>",
     "license": "MIT",

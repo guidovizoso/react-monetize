@@ -2,7 +2,7 @@
 <h1 align="center">react-monetize <sup>1.0.0</sup></h1>
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
-![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=1.0.0-rc.2)
+![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=1.0.0-rc.3)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![npm](https://img.shields.io/npm/dt/react-monetize?label=npm%20downloads)
 <a href="https://twitter.com/guido_vizoso" target="_blank">

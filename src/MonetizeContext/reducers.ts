@@ -40,7 +40,7 @@ const reducers = (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                isMonetized: false,
+                isMonetized: true,
                 state: action.payload.state,
                 events,
             };
