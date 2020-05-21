@@ -1,6 +1,6 @@
 {
     "name": "react-monetize",
-    "version": "1.0.0-rc.3",
+    "version": "1.0.0-rc.4",
     "description": "Helpers and hooks to speed up your integration with Web Monetization API",
     "author": "Guido Vizoso <guido.vizoso9@gmail.com>",
     "license": "MIT",
@@ -17,12 +17,14 @@
         "url": "https://github.com/guidovizoso/react-monetize/issues",
         "email": "guido.vizoso9@gmail.com"
     },
+    "homepage": "https://react-monetize.now.sh",
     "private": false,
     "scripts": {
         "build": "rollup -c",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
         "test": "jest",
-        "test:watch": "jest --watch"
+        "test:watch": "jest --watch",
+        "docs": "cd docs && yarn dev"
     },
     "husky": {
         "hooks": {

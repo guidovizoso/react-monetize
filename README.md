@@ -1,15 +1,24 @@
-<h2 align="center">💸</h2>
-<h1 align="center">react-monetize <sup>1.0.0</sup></h1>
+<div align="center">
+<img
+    height="80"
+    width="80"
+    alt="money"
+    src="https://raw.githubusercontent.com/guidovizoso/react-monetize/master/money.png"
+  />
+
+<h1>react-monetize</h1>
+<p>Helpers and hooks to speed up your integration with Web Monetization API</p>
+<a href="https://react-monetize.now.sh"><b>react-monetize.now.sh</b></a>
+</div>
+<br/>
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
-![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=1.0.0-rc.3)
+![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=1.0.0-rc.4)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![npm](https://img.shields.io/npm/dt/react-monetize?label=npm%20downloads)
 <a href="https://twitter.com/guido_vizoso" target="_blank">
 <img alt="Twitter: guido\_vizoso" src="https://img.shields.io/twitter/follow/guido_vizoso.svg?style=social" />
 </a>
-
-> Helpers and hooks to speed up your integration with [Web Monetization API](https://webmonetization.org/)
 
 ## Install
 
@@ -103,12 +112,10 @@ yarn dev
 
 Develop.
 
-## Roadmap to v1.0.0
+## WIP
 
--   ~~Improve code on MonetizeContext file.~~
--   ~~Add ESLint.~~
--   ~~Automatic deployment with Github Actions.~~
--   Add tests.
+-   Improve documentation code and details.
+-   Add documentation project to the library code.
 
 ## Future changes
 
