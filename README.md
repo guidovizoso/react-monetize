@@ -22,8 +22,8 @@
 
 ## Install
 
-Currently supports React, Create React App and Next Js.
-Not yet tested in Gatsby or Preact.
+Currently supports React, Create React App, Next Js and Gatsby (through [gatsby-plugin-monetization](https://github.com/mrmuhammadali/gatsby-plugin-monetization)).
+Not yet tested in Preact.
 
 ```sh
 yarn add react-monetize
@@ -131,7 +131,6 @@ Develop.
 -   LinkedIn: [@guidovizoso](https://linkedin.com/in/guidovizoso)
 
 ## Contributors
-
 
 👤 **Muhammad Ali <hi@muhammadali.io>**
 
