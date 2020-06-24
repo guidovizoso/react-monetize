@@ -13,7 +13,7 @@
 <br/>
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
-![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=1.0.0-rc.5)
+![CI](https://github.com/guidovizoso/react-monetize/workflows/CI/badge.svg?tag=1.0.0-rc.6)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![npm](https://img.shields.io/npm/dt/react-monetize?label=npm%20downloads)
 <a href="https://twitter.com/guido_vizoso" target="_blank">
@@ -22,8 +22,8 @@
 
 ## Install
 
-Currently supports React, Create React App and Next Js.
-Not yet tested in Gatsby or Preact.
+Currently supports React, Create React App, Next Js and Gatsby (through [gatsby-plugin-monetization](https://github.com/mrmuhammadali/gatsby-plugin-monetization)).
+Not yet tested in Gatsby or Preact. Not yet tested in Preact.
 
 ```sh
 yarn add react-monetize
@@ -131,7 +131,6 @@ Develop.
 -   LinkedIn: [@guidovizoso](https://linkedin.com/in/guidovizoso)
 
 ## Contributors
-
 
 👤 **Muhammad Ali <hi@muhammadali.io>**
 
