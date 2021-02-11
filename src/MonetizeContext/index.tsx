@@ -31,9 +31,9 @@ const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
             pointer.content = paymentPointer;
             document.head.appendChild(pointer);
 
-            dispatch({ type: 'INITIAL_DECETED', payload: { state: document.monetization.state } });
+            dispatch({ type: 'INITIAL_DETECTED', payload: { state: document.monetization.state } });
         } else {
-            dispatch({ type: 'INITIAL_NOT_DECETED' });
+            dispatch({ type: 'INITIAL_NOT_DETECTED' });
         }
     }, []);
 
