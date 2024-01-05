@@ -1,13 +1,9 @@
-function addListeners(events) {
-    events.forEach((e) => {
-        (document as any).monetization.addEventListener(e.name, e.handler);
-    });
+function addListenerToElement(element, event) {
+    element.addEventListener(event.name, event.handler);
 }
 
-function removeListeners(events) {
-    events.forEach((e) => {
-        (document as any).monetization.removeEventListener(e);
-    });
+function removeListenerToElement(element, event) {
+    element.removeEventListener(event.name, event.handler);
 }
 
-export { addListeners, removeListeners };
+export { addListenerToElement, removeListenerToElement };

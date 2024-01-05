@@ -10,12 +10,9 @@ export type ContextType = {
 };
 
 export type Action =
-    | { type: 'INITIAL_DECETED'; payload: { state: string } }
+    | { type: 'INITIAL_DETECTED' }
     | { type: 'INITIAL_NOT_DETECTED' }
-    | { type: 'MONETIZATION_START'; payload: { state: string } }
-    | { type: 'MONETIZATION_PENDING'; payload: { state: string } }
-    | { type: 'MONETIZATION_STOP'; payload: { state: string } }
-    | { type: 'MONETIZATION_PROGRESS'; payload: { state: string; event: object } };
+    | { type: 'MONETIZATION'; payload: { state: any } };
 
 export type Dispatch = (action: Action) => void;
 
