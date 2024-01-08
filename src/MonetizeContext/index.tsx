@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ContextType, StateType } from '../types';
 import reducers from './reducers';
-import { addListenerToElement, removeListenerToElement } from '../utils/events';
+import { addListenerToElement, removeListenerFromElement } from '../utils/events';
 
 interface ProviderProps {
     children?: React.ReactNode;
@@ -45,6 +45,7 @@ const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
             const linkElement = addPaymentPointerToHead(paymentPointer);
             if (!linkElement) {
                 dispatch({ type: 'INITIAL_NOT_DETECTED' });
+                return;
             }
             const handler = (event) => dispatch({ type: 'MONETIZATION', payload: { state: event } });
 
@@ -56,7 +57,7 @@ const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
             dispatch({ type: 'INITIAL_DETECTED' });
 
             return () => {
-                removeListenerToElement(linkElement, { name: 'monetization', handler });
+                removeListenerFromElement(linkElement, { name: 'monetization', handler });
             };
         };
 
