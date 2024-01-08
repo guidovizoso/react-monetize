@@ -38,7 +38,6 @@ const addPaymentPointerToHead = (paymentPointer) => {
 
 const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
     const [state, dispatch] = React.useReducer(reducers, initialState);
-    console.log('paymentPointer', paymentPointer);
 
     React.useEffect(() => {
         const loadHandler = () => {
