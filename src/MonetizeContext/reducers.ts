@@ -5,7 +5,6 @@ const reducers = (state, action) => {
                 ...state,
                 isLoading: false,
                 isMonetized: true,
-                state: action.payload.state,
             };
         case 'INITIAL_NOT_DETECTED':
             return {

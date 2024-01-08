@@ -21,22 +21,34 @@ const Context = React.createContext<ContextType>({
     dispatch: () => {},
 });
 
+const addPaymentPointerToHead = (paymentPointer) => {
+    const pointer = document.createElement('link');
+
+    const isWebMonetizationSupported = pointer.relList.supports('monetization');
+
+    if (typeof document !== 'undefined' && isWebMonetizationSupported) {
+        pointer.rel = 'monetization';
+        pointer.href = paymentPointer;
+        document.head.appendChild(pointer);
+        return pointer;
+    }
+
+    return null;
+};
+
 const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
     const [state, dispatch] = React.useReducer(reducers, initialState);
+    console.log('paymentPointer', paymentPointer);
 
     React.useEffect(() => {
-        const pointer = document.createElement('link');
-
-        const isWebMonetizationSupported = pointer.relList.supports('monetization');
-
-        if (typeof document !== 'undefined' && isWebMonetizationSupported) {
-            pointer.rel = 'monetization';
-            pointer.href = paymentPointer;
-            document.head.appendChild(pointer);
-
+        const loadHandler = () => {
+            const linkElement = addPaymentPointerToHead(paymentPointer);
+            if (!linkElement) {
+                dispatch({ type: 'INITIAL_NOT_DETECTED' });
+            }
             const handler = (event) => dispatch({ type: 'MONETIZATION', payload: { state: event } });
 
-            addListenerToElement(pointer, {
+            addListenerToElement(linkElement, {
                 name: 'monetization',
                 handler,
             });
@@ -44,11 +56,14 @@ const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
             dispatch({ type: 'INITIAL_DETECTED' });
 
             return () => {
-                removeListenerToElement(pointer, { name: 'monetization', handler });
+                removeListenerToElement(linkElement, { name: 'monetization', handler });
             };
-        } else {
-            dispatch({ type: 'INITIAL_NOT_DETECTED' });
-        }
+        };
+
+        window.addEventListener('load', loadHandler);
+        return () => {
+            window.removeEventListener('load', loadHandler);
+        };
     }, []);
 
     return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
