@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ContextType, StateType } from '../types';
 import reducers from './reducers';
-import { addListeners, removeListeners } from '../utils/events';
+import { addListenerToElement, removeListenerFromElement } from '../utils/events';
 
 interface ProviderProps {
     children?: React.ReactNode;
@@ -21,58 +21,49 @@ const Context = React.createContext<ContextType>({
     dispatch: () => {},
 });
 
+const addPaymentPointerToHead = (paymentPointer) => {
+    const pointer = document.createElement('link');
+
+    const isWebMonetizationSupported = pointer.relList.supports('monetization');
+
+    if (typeof document !== 'undefined' && isWebMonetizationSupported) {
+        pointer.rel = 'monetization';
+        pointer.href = paymentPointer;
+        document.head.appendChild(pointer);
+        return pointer;
+    }
+
+    return null;
+};
+
 const Provider: React.FC = ({ children, paymentPointer }: ProviderProps) => {
     const [state, dispatch] = React.useReducer(reducers, initialState);
 
     React.useEffect(() => {
-        if (typeof document !== 'undefined' && document.monetization) {
-            const pointer = document.createElement('meta');
-            pointer.name = 'monetization';
-            pointer.content = paymentPointer;
-            document.head.appendChild(pointer);
+        const loadHandler = () => {
+            const linkElement = addPaymentPointerToHead(paymentPointer);
+            if (!linkElement) {
+                dispatch({ type: 'INITIAL_NOT_DETECTED' });
+                return;
+            }
+            const handler = (event) => dispatch({ type: 'MONETIZATION', payload: { state: event } });
 
-            dispatch({ type: 'INITIAL_DECETED', payload: { state: document.monetization.state } });
-        } else {
-            dispatch({ type: 'INITIAL_NOT_DECETED' });
-        }
-    }, []);
+            addListenerToElement(linkElement, {
+                name: 'monetization',
+                handler,
+            });
 
-    React.useEffect(() => {
-        if (typeof document !== 'undefined' && document.monetization) {
-            addListeners([
-                {
-                    name: 'monetizationstart',
-                    handler: () =>
-                        dispatch({ type: 'MONETIZATION_START', payload: { state: document.monetization.state } }),
-                },
-                {
-                    name: 'monetizationpending',
-                    handler: () =>
-                        dispatch({ type: 'MONETIZATION_PENDING', payload: { state: document.monetization.state } }),
-                },
-                {
-                    name: 'monetizationstop',
-                    handler: () =>
-                        dispatch({ type: 'MONETIZATION_STOP', payload: { state: document.monetization.state } }),
-                },
-                {
-                    name: 'monetizationprogress',
-                    handler: (e) =>
-                        dispatch({
-                            type: 'MONETIZATION_PROGRESS',
-                            payload: { state: document.monetization.state, event: e },
-                        }),
-                },
-            ]);
+            dispatch({ type: 'INITIAL_DETECTED' });
+
             return () => {
-                removeListeners([
-                    'monetizationstart',
-                    'monetizationpending',
-                    'monetizationstop',
-                    'monetizationprogress',
-                ]);
+                removeListenerFromElement(linkElement, { name: 'monetization', handler });
             };
-        }
+        };
+
+        window.addEventListener('load', loadHandler);
+        return () => {
+            window.removeEventListener('load', loadHandler);
+        };
     }, []);
 
     return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
