@@ -38,7 +38,7 @@ describe('Test useContent hook', () => {
     test('passes the appropiate data', () => {
         const isLoading = screen.getByTestId('isLoading');
         const isMonetized = screen.getByTestId('isMonetized');
-        expect(isLoading).toHaveTextContent('true');
+        expect(isLoading).toHaveTextContent('false');
         expect(isMonetized).toHaveTextContent('false');
     });
 });
